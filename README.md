@@ -33,7 +33,7 @@ $('.pagination').pagination({
 
 ##配置项
 
-以下参数全部为默认值
+以下为全部配置项
 ```
 $('.pagination').pagination({
     /*总页数*/
