@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS分页插件:jquery.pagination.js</title>
+    <link rel="stylesheet" href="./css/jquery.pagination.css">
+<style>
+
+#container{
+    width: 800px;
+    max-width: 80%;
+    margin: 0px auto;
+    padding-bottom: 30px;
+}
+h1,h2{
+    margin-top: 20px;
+    font-size: 21px;
+}
+p{
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+.table{
+    padding-bottom: 30px;
+}
+table{
+    margin: 0;
+    width: 100%;
+    border-collapse: collapse;
+}
+td{
+    border: 1px solid #ddd;
+    padding: 3px 12px;
+}
+.pagination{
+    text-align: center;
+}
+
+pre{
+    background: #e5e5e5;
+    padding: 10px 20px;
+}
+</style>
+</head>
+<body>
+
+
+
+<div id="container">
+    <h1>JS分页插件： 简单、易用 <small>jquery.pagination.js</small></h1>
+
+    <p>默认参数</p>
+    <div class="table"></div>
+
+    <div class="pagination"></div>
+
+
+    <p>自定义分页模板</p>
+    <div class="table"></div>
+
+    <div class="pagination"></div>
+
+    <h2>使用</h2>
+
+
+    <pre>
+&lt;div class="pagination"&gt;&lt;/div&gt;
+
+$('.pagination').pagination({
+    total: 100,
+    onJump: function(index){
+        console.log(index);
+    }
+});  
+    </pre>
+
+    <p><a href="" target="_blank">前往github下载</a></p>
+
+</div>
+
+
+<script src="./js/jquery.js"></script>    
+<script src="./js/jquery.pagination.js"></script>
+<script>
+
+function getList(index){
+    var list = ['<table>'];
+
+    for(var i = 1; i <= 10; i++){
+        list.push('<tr><td>'+ ((index-1)*10 + i) +'</td></tr>');
+    }
+
+    list.push('</table>');
+
+    return list.join('')
+}
+
+/***********使用示例*******/
+var $table      = $('.table');
+var $pagination = $('.pagination');
+
+
+$pagination.eq(0).pagination({
+    total: 100,
+    onJump: function(index){
+        $table.eq(0).html(getList(index));
+    }
+});
+$table.eq(0).html(getList(1));
+
+
+/*自定义模板*/
+$pagination.eq(1).pagination({
+    total: 100,
+    current: 5,
+    template: {
+        first:'<a href="javascript:;" data-index="first">First</a>',
+        last:'<a href="javascript:;" data-index="last">Last</a>',
+        ellipsis:'<a href="javascript:;" data-index="ellipsis">...</a>',
+        item: '<a href="javascript:;" class="page-{{dataIndex}}" data-index="{{dataIndex}}">{{index}}</a>',
+        wrapElement: 'div'
+    },
+    onJump: function(index){
+        $table.eq(1).html(getList(index));
+    }
+});
+$table.eq(1).html(getList(5));
+
+</script>
+</body>
+</html>
