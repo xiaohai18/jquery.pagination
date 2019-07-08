@@ -20,7 +20,7 @@ Written by: hishion
 ```
 
 
-###Step 2: 调用 mbUploadify 
+###Step 2: 调用 pagination 
 
 ```javascript
 $('.pagination').pagination({
