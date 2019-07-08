@@ -15,7 +15,7 @@ Written by: hishion
 ```html
 <div class="pagination"></div>
 
-<!-- mbSlider Javascript file -->
+<!-- Javascript file -->
 <script src="jquery.pagination.js"></script>
 ```
 
